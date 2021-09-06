@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>        
+        #canvas {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    
+    <script>
+        // canvas 엘리먼트를 선언
+        const canvas = document.getElementById('canvas');
+
+        // 2d모드의 그리기 객체 취득
+        const ctx = canvas.getContext("2d");
+        
+        // 색을 설정
+        ctx.fillStyle = 'blue';
+        ctx.strokeStyle = 'red';
+        
+        // 파란색 사각형을 그린다
+        ctx.fillRect(0, 0, 150, 150);
+
+        // 캔버스를 지운다
+        ctx.clearRect(10, 10, 100, 100);
+
+        // 선을 그린다        
+        ctx.moveTo(0, 0);
+        ctx.lineTo(100, 100);
+        ctx.stroke();
+
+        // 원을 그린다        
+        ctx.beginPath();
+        ctx.arc(100, 100, 10, 0, 2*Math.PI);
+        ctx.stroke();
+        ctx.fill();
+        
+
+        // 전체 지우기
+        ctx.clearRect(0, 0, 400, 300);
+
+        // 마름모 그리기
+        ctx.clearRect(0, 0, 600, 600);
+        ctx.moveTo(300, 0);
+        ctx.lineTo(600, 300);
+        ctx.stroke();
+        ctx.moveTo(600, 300);
+        ctx.lineTo(300, 600);
+        ctx.stroke();
+        ctx.moveTo(300, 600);
+        ctx.lineTo(0, 300);
+        ctx.stroke();
+        ctx.moveTo(0, 300);
+        ctx.lineTo(300, 0);
+        ctx.stroke();
+
+        //마름모에 내접하는 사각형 그리기
+        ctx.clearRect(0, 0, 600, 600);
+        ctx.moveTo(150, 150);
+        ctx.lineTo(450, 150);
+        ctx.stroke();
+        ctx.moveTo(450, 150);
+        ctx.lineTo(450, 450);
+        ctx.stroke();
+        ctx.moveTo(450, 450);
+        ctx.lineTo(150, 450);
+        ctx.stroke();
+        ctx.moveTo(150, 450);
+        ctx.lineTo(150, 150);
+        ctx.stroke();
+        
+        // 나선 발산
+        ctx.clearRect(0, 0, 600, 600);
+        var gap = 10;
+        var prevX = 300;
+        var prevY = 300;
+        ctx.moveTo(300, 300);
+
+        for(let i = 1; i < 101; i++) {
+            if(i%4 == 1) {
+                ctx.moveTo(prevX, prevY);
+                ctx.lineTo(prevX, prevY-gap*i);
+                prevY = prevY-gap*i;
+            } else if(i%4 == 2) {
+                ctx.moveTo(prevX, prevY);
+                ctx.lineTo(prevX+gap*i, prevY);
+                prevX = prevX+gap*i;
+            } else if(i%4 == 3) {
+                ctx.moveTo(prevX, prevY);
+                ctx.lineTo(prevX, prevY+gap*i);
+                prevY = prevY+gap*i;
+            } else if(i%4 == 0) {
+                ctx.moveTo(prevX, prevY);
+                ctx.lineTo(prevX-gap*i, prevY);
+                prevX = prevX-gap*i;
+            }
+            ctx.stroke();            
+        }        
+        
+        // 임의의 높이를 가지는 점 4개를 동일한 간격으로 찍기
+        ctx.clearRect(0, 0, 600, 600);
+
+        var canvasGap = 600/5;        
+        var points = [];
+
+        for(let i = 0; i < 4; i++) {
+            let point = {
+                x: 0,
+                y: 0
+            }
+            point.x = canvasGap * (i+1);
+            point.y = Math.random() * 600;            
+            points[i] = point;
+        }
+
+        for(let i = 0; i < 4; i++) {
+            ctx.beginPath();
+            ctx.arc(points[i].x, points[i].y, 10, 0, 2*Math.PI);            
+            ctx.fill();
+        }
+        
+        ctx.moveTo(0, 300);
+
+        for(let i = 0; i < 4; i++) {            
+            ctx.lineTo(points[i].x, points[i].y);
+            ctx.stroke();            
+        }
+
+        ctx.lineTo(600, 300);
+        ctx.stroke();
+    </script>
+</body>
+
+</html>
