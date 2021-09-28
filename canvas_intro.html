@@ -18,25 +18,40 @@
     
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script>
-        // // 파란색 사각형을 그린다
-        // ctx.fillRect(0, 0, 600, 600);
+        // 시작
+        // canvas 엘리먼트를 선언
+        const canvas = document.getElementById('canvas');
 
-        // // 캔버스를 지운다
-        // ctx.clearRect(0, 0, 600, 600);
-
-        // // 선을 그린다        
-        // ctx.moveTo(10, 10);
-        // ctx.lineTo(10, 300);
-        // ctx.stroke();
-
-        // // 원을 그린다        
-        // ctx.beginPath();
-        // ctx.arc(300, 300, 100, 0, 2*Math.PI);
-        // ctx.stroke();
-        // ctx.fill();
+        // 2d모드의 그리기 객체 취득
+        const ctx = canvas.getContext("2d");       
         
-        // 전체 지우기
-        // ctx.clearRect(0, 0, 600, 600);
+        // 색을 설정
+        ctx.fillStyle = 'blue';
+        ctx.strokeStyle = 'red';
+
+        //Jquery를 사용해서 canvas의 크기 반환
+        var canvasWidth = $('#canvas').width();
+        var canvasHeight = $('#canvas').height();
+
+        // 파란색 사각형을 그린다
+        ctx.fillRect(0, 0, 200, 200);
+
+        // 캔버스를 지운다
+        ctx.clearRect(0, 0, 600, 600);
+
+        // 선을 그린다        
+        ctx.moveTo(10, 10);
+        ctx.lineTo(300, 300);
+        ctx.stroke();
+
+        // 원을 그린다        
+        ctx.beginPath();
+        ctx.arc(300, 300, 100, 0, 2*Math.PI);
+        ctx.stroke();
+        ctx.fill();
+        
+        전체 지우기
+        ctx.clearRect(0, 0, 600, 600);
 
         // 캔버스에 가로 세로가 각각 200, 250인 사각형을 그리기
 
@@ -106,25 +121,8 @@
         //     ctx.stroke();            
         // }
 
-
-        // 시작
-        // canvas 엘리먼트를 선언
-        const canvas = document.getElementById('canvas');
-
-        // 2d모드의 그리기 객체 취득
-        const ctx = canvas.getContext("2d");       
-        
-        // 색을 설정
-        ctx.fillStyle = 'blue';
-        ctx.strokeStyle = 'red';
-
-        //Jquery를 사용해서 canvas의 크기 반환
-        var canvasWidth = $('#canvas').width();
-        var canvasHeight = $('#canvas').height();
-
-
-        // 임의의 높이를 가지는 점 4개를 동일한 간격으로 찍기
-        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+        // // 임의의 높이를 가지는 점 4개를 동일한 간격으로 찍기
+        // ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
         // // 점 개수 설정
         // var count = 6;
@@ -231,26 +229,26 @@
         // }
 
 
-        // Animation 영역
-        var end = Math.PI * 2;  // 원의 끝점 선언
-        var sec = 2;  // 총 그리는 시간 선언
-        var fps = 75; // frame per second 설정
-        for (var i = 0; i < (fps*sec)+1; i++) { // fps * sec + 1 만큼 반복해서 그려야함
-            drawSet(i);
-        };
+        // // Animation 영역
+        // var end = Math.PI * 2;  // 원의 끝점 선언
+        // var sec = 2;  // 총 그리는 시간 선언
+        // var fps = 75; // frame per second 설정
+        // for (var i = 0; i < (fps*sec)+1; i++) { // fps * sec + 1 만큼 반복해서 그려야함
+        //     drawSet(i);
+        // };
 
-        function drawSet(delay) {
-            setTimeout(function() {
-                ctx.clearRect(0, 0, 200, 200);
-                ctx.beginPath();
-                ctx.arc(100, 100, 50, 0, end / (fps*sec) * delay);  //한번에 그리는 각도는 end / (fps*sec)
-                ctx.stroke();
-                console.log("Set")
-            }, delay*1000/fps);  //1초가 1000 이므로 1000을 fps로 나누면 fps에 맞는 delay time 설정 가능
-        }
+        // function drawSet(delay) {
+        //     setTimeout(function() {
+        //         ctx.clearRect(0, 0, 200, 200);
+        //         ctx.beginPath();
+        //         ctx.arc(100, 100, 50, 0, end / (fps*sec) * delay);  //한번에 그리는 각도는 end / (fps*sec)
+        //         ctx.stroke();
+        //         console.log("Set")
+        //     }, delay*1000/fps);  //1초가 1000 이므로 1000을 fps로 나누면 fps에 맞는 delay time 설정 가능
+        // }
         
-        var x = 0;
-        var myAni;
+        // var x = 0;
+        // var myAni;
 
         // function drawReq() {
         //     ctx.clearRect(200, 200, 400, 400);
@@ -264,22 +262,22 @@
         // }
         // drawReq();
         
-        // 스탑 추가
-        function drawReq() {
-            ctx.clearRect(200, 200, 400, 400);
-            ctx.beginPath();
-            ctx.arc(300, 300, 50, 0, Math.PI * x, false);            
-            ctx.stroke();
-            x += 1/60;
-            console.log("Req");
+        // // 스탑 추가
+        // function drawReq() {
+        //     ctx.clearRect(200, 200, 400, 400);
+        //     ctx.beginPath();
+        //     ctx.arc(300, 300, 50, 0, Math.PI * x, false);            
+        //     ctx.stroke();
+        //     x += 1/60;
+        //     console.log("Req");
 
-            myAni = requestAnimationFrame(drawReq);
+        //     myAni = requestAnimationFrame(drawReq);
             
-            if(x>4) {
-                cancelAnimationFrame(myAni);
-            }
-        }
-        drawReq();
+        //     if(x>4) {
+        //         cancelAnimationFrame(myAni);
+        //     }
+        // }
+        // drawReq();
 
     </script>
 </body>
