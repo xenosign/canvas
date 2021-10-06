@@ -141,32 +141,26 @@
         // ctx.stroke();
 
 
-        // 곡선으로 원그리기
-        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-        ctx.beginPath();
-        ctx.moveTo(canvasWidth/2, 0);
-        ctx.quadraticCurveTo(0, 0, 0, canvasHeight/2);
-        ctx.stroke();
+        // // 곡선으로 원그리기
+        // ctx.clearRect(0, 0, canvasWidth, canvasHeight);        
+        // ctx.moveTo(canvasWidth/2, 0);
+        // ctx.quadraticCurveTo(0, 0, 0, canvasHeight/2);
 
-        ctx.beginPath();
-        ctx.moveTo(0, 300);
-        ctx.quadraticCurveTo(0, 600, canvasWidth/2, canvasHeight);
-        ctx.stroke();
+        // ctx.moveTo(0, 300);
+        // ctx.quadraticCurveTo(0, 600, canvasWidth/2, canvasHeight);
+        
+        // ctx.moveTo(300, 600);
+        // ctx.quadraticCurveTo(600, 600, canvasWidth, canvasHeight/2);
+        
+        // ctx.moveTo(600, 300);
+        // ctx.quadraticCurveTo(600, 0, canvasWidth/2, 0);
+        
+        // ctx.stroke();
 
-        ctx.beginPath();
-        ctx.moveTo(300, 600);
-        ctx.quadraticCurveTo(600, 600, canvasWidth, canvasHeight/2);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(600, 300);
-        ctx.quadraticCurveTo(600, 0, canvasWidth/2, 0);
-        ctx.stroke();
-
-        ctx.strokeStyle = 'blue';
-        ctx.beginPath();
-        ctx.arc(canvasWidth/2, canvasHeight/2, canvasWidth/2, 0, Math.PI*2);
-        ctx.stroke();
+        // ctx.strokeStyle = 'blue';
+        // ctx.beginPath();
+        // ctx.arc(canvasWidth/2, canvasHeight/2, canvasWidth/2, 0, Math.PI*2);
+        // ctx.stroke();
 
 
 
@@ -199,7 +193,7 @@
         // // 임의의 점 직선 연결
         // ctx.moveTo(points[0].x, points[0].y);
 
-        // for(let i = 0; i < count; i++) {            
+        // for(let i = 1; i < count; i++) {            
         //     ctx.lineTo(points[i].x, points[i].y);
         //     ctx.stroke();            
         // } // 각각의 점들을 선으로 연결
@@ -207,6 +201,7 @@
 
         // //임의의 점 곡선으로 연결하기 버전 1
         // ctx.strokeStyle = "black";
+        // ctx.beginPath();
         // ctx.moveTo(points[0].x, points[0].y); //선 시작점은 캔버스의 왼쪽 끝 중간 위치에서 시작
 
         // for(let i = 0; i < count; i++) {            
@@ -224,7 +219,8 @@
 
 
         // // 임의의 점 곡선으로 연결하기 버전 2
-        // ctx.strokeStyle = "red";
+        // ctx.strokeStyle = "green";
+        // ctx.beginPath();
         // ctx.moveTo(points[0].x, points[0].y); //선 시작점은 캔버스의 왼쪽 끝 중간 위치에서 시작
 
         // for(let i = 0; i < count; i++) {            

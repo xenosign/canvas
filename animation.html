@@ -40,7 +40,7 @@
         // ###### 시간 함수로 애니메이션 그리기
         var end = Math.PI * 2;  // 원의 끝점 선언
         var sec = 2;  // 총 그리는 시간 선언
-        var fps = 75; // frame per second 설정
+        var fps = 60; // frame per second 설정
         for (var i = 0; i < (fps*sec)+1; i++) { // fps * sec + 1 만큼 반복해서 그려야함
             drawSet(i);
         };
@@ -62,9 +62,9 @@
     
         // ###### 무한 반복하는 애니메이션
         function drawReqInfi() {
-            //ctx.clearRect(200, 200, 250, 250);
+            ctx.clearRect(200, 200, 250, 250);
             ctx.beginPath();
-            ctx.arc(300+(x*5), 300, 50, 0, Math.PI * x, false);    //x축으로 5/60 씩 무한히 그려 나가는 모습        
+            ctx.arc(300, 300, 50, 0, Math.PI * x, false);    //x축으로 5/60 씩 무한히 그려 나가는 모습        
             ctx.stroke();
             x += 1/60;
             console.log("Infi");
