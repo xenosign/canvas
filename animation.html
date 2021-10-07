@@ -93,24 +93,27 @@
         // }
         // drawReqStop();
 
-        // ###### 나선 발산
-        var end = Math.PI * 2;  // 원의 끝점 선언
-        var sec = 10;  // 총 그리는 시간 선언
-        var fps = 20; // frame per second 설정
-        for (var i = 0; i < (fps*sec)+1; i++) { // fps * sec + 1 만큼 반복해서 그려야함
-            drawSet(i);
-        };
+        // ###### 나선 발산                
+        var index = 0;
+        var length = 1;
+        var gap = 1;
 
-        function drawSet(delay) {
-            setTimeout(function() {                
-                ctx.beginPath();
-                ctx.arc(300, 300, delay, end / (fps*sec) * delay, end / (fps*sec) * delay+1);  //한번에 그리는 각도는 end / (fps*sec) 에 증가하는 delay 값을 곱해서 호를 점점 그려나감
-                console.log(delay);
-                ctx.stroke();
-                console.log("Set")
-            }, delay*1000/fps);  //1초가 1000 이므로 1000을 fps로 나누면 fps에 맞는 delay time 설정 가능
+
+        function drawReqInfi() {
+            ctx.beginPath();
+            
+            let x = gap * (Math.cos((index * Math.PI) / 180));
+            let y = gap * (Math.sin((index * Math.PI) / 180));
+            ctx.arc(300 + x, 300 + y, 2, 0, 2 * Math.PI);
+            
+            ctx.fill();
+
+            index++;
+            gap += 0.1;
+            
+            requestAnimationFrame(drawReqInfi);
         }
-
+        drawReqInfi();        
     </script>
 </body>
 
