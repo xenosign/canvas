@@ -97,18 +97,19 @@
         var index = 0;
         var length = 1;
         var gap = 1;
-
-        ctx.moveTo(300, 300);
+        
+        
+        //ctx.moveTo(300, 300);
         function drawReqInfi() {
-            ctx.beginPath();
-            
+            ctx.beginPath();              
             let x = 300 + gap * (Math.cos((index * Math.PI) / 180));
             let y = 300 + gap * (Math.sin((index * Math.PI) / 180));
             ctx.arc(x, y, 1, 0, 2 * Math.PI);
-            ctx.lineTo(x, y);            
-            
+            //ctx.lineTo(x, y);                        
             ctx.fill();
-            ctx.stroke();
+            //ctx.stroke();
+
+            //ctx.moveTo(x, y);
 
             index += 1;
             gap += 0.1;
